@@ -122,9 +122,18 @@ $(document).ready(function () {
         });
 
     });
+    $('.carousel').click(()=>{
+        console.log('carousel mofos !');
+    });
+    $('.carousel-item').click(()=>{
+        console.log('carousel item clicked !');
+    });
+    $('#fname').click(()=>{
+        console.log('fname clicked !')
+    })
+
     let scroll = new SmoothScroll('a[href*="#"]');
 });
-
 function next() {
     console.log();
     $('.carousel').carousel('next', 1);

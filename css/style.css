@@ -252,25 +252,23 @@ input[type=number]::-webkit-outer-spin-button {
 input
 {
     border: 2px solid white!important;
-    margin: 10px!important;
-    padding-left: 10px!important;
     box-sizing: border-box!important;
     height: 52px!important;
     border-radius: 26px!important;
     width: 100%;
     background: transparent;
     color: white;
+    font-size: 1.5rem;
+    padding: 0 15px!important;
 }
 input::-webkit-input-placeholder {
     color: white !important;
-    padding-left: 10px;
     font-size: 1.5rem;
 }
 
 input:-moz-placeholder { /* Firefox 18- */
     color: white !important;
     font-size: 1.5rem;
-    padding-left: 10px;
 }
 
 input::-moz-placeholder {  /* Firefox 19+ */
@@ -282,7 +280,6 @@ input::-moz-placeholder {  /* Firefox 19+ */
 input:-ms-input-placeholder {
     color: white !important;
     font-size: 1.5rem;
-    padding-left: 10px;
 }
 .waves-effect
 {
@@ -297,7 +294,6 @@ input:-ms-input-placeholder {
 .input-field input[type=text]:focus {
     border: 2px solid white!important;
     border-radius: 26px;
-    padding-left: 10px!important;
     box-shadow: 0 1px 0 0 white;
     color: #ffffff;
 }
@@ -306,12 +302,10 @@ input:-ms-input-placeholder {
     border-bottom: 1px solid white;
     box-shadow: 0 1px 0 0 white;
     color: #ffffff;
-    padding-left: 10px;
 }
 .input-field input[type=text].invalid {
     border: 2px solid red;
     border-radius: 26px;
-    padding-left: 10px;
     box-shadow: none;
 }
 .btn
@@ -320,11 +314,12 @@ input:-ms-input-placeholder {
     color:rgb(69, 150, 251) ;
     text-transform: none!important ;
     border-radius: 26px;
-    margin-left: 10px;
     height: 52px;
-    width: 40%;
     font-size: 2rem;
     margin-top:20px;
+}
+.select-wrapper input.select-dropdown{
+    margin-bottom: 0!important;
 }
 .btn:hover
 {
@@ -356,6 +351,12 @@ input:-ms-input-placeholder {
     position: absolute;
     width: 100vw;
     top:30vh;
+}
+.dropdown-content.select-dropdown li:not(.disabled) span{
+    color:rgb(69, 150, 251);
+}
+.select-wrapper span.caret{
+    right: 20px!important;
 }
 @media only screen and (max-width: 600px) {
     /*.col.bot.s12.mobileHeadingBottom {*/
@@ -401,6 +402,14 @@ input:-ms-input-placeholder {
     .sponsors
     {
         top:10vh;
+    }
+    .form-input input[type="text"], .form-input input[type="email"], .form-input input[type="phone"], .form-input input[type="number"], .form-input input[type="tel"], .form-input-wide input[type="text"], .form-input-wide input[type="email"], .form-input-wide input[type="phone"], .form-input-wide input[type="number"], .form-input-wide input[type="tel"] {
+
+        width: 180px !important;
+
+    }
+    .dropdown-content.select-dropdown li:not(.disabled) span{
+        color:rgb(0, 196, 164);
     }
 }
 /* Effect 10: Corner indicator */
@@ -468,4 +477,8 @@ input:-ms-input-placeholder {
     0% 		{ transform: rotate(0deg); }
     50% 	{ transform: rotate(180deg); }
     100% 	{ transform: rotate(360deg); }
+}
+.dropdown-content.select-dropdown{
+    top:0 !important;
+    border-radius: 26px;
 }
