@@ -4,7 +4,7 @@
     })) : "object" == typeof exports ? module.exports = t(e) : e.SmoothScroll = t(e)
 })("undefined" != typeof global ? global : "undefined" != typeof window ? window : this, (function (e) {
     "use strict";
-    var t = "querySelector" in document && "addEventListener" in e && "requestAnimationFrame" in e && "closest" in e.Element.prototype,
+    let t = "querySelector" in document && "addEventListener" in e && "requestAnimationFrame" in e && "closest" in e.Element.prototype,
         n = {
             ignore: "[data-scroll-ignore]",
             header: null,
@@ -17,10 +17,10 @@
             after: function () {
             }
         }, o = function () {
-            for (var e = {}, t = 0, n = arguments.length; t < n; t++) {
-                var o = arguments[t];
+            for (let e = {}, t = 0, n = arguments.length; t < n; t++) {
+                let o = arguments[t];
                 !(function (t) {
-                    for (var n in t) t.hasOwnProperty(n) && (e[n] = t[n])
+                    for (let n in t) t.hasOwnProperty(n) && (e[n] = t[n])
                 })(o)
             }
             return e
@@ -28,18 +28,18 @@
             return parseInt(e.getComputedStyle(t).height, 10)
         }, r = function (e) {
             "#" === e.charAt(0) && (e = e.substr(1));
-            for (var t, n = String(e), o = n.length, a = -1, r = "", i = n.charCodeAt(0); ++a < o;) {
+            for (let t, n = String(e), o = n.length, a = -1, r = "", i = n.charCodeAt(0); ++a < o;) {
                 if (0 === (t = n.charCodeAt(a))) throw new InvalidCharacterError("Invalid character: the input contains U+0000.");
                 t >= 1 && t <= 31 || 127 == t || 0 === a && t >= 48 && t <= 57 || 1 === a && t >= 48 && t <= 57 && 45 === i ? r += "\\" + t.toString(16) + " " : r += t >= 128 || 45 === t || 95 === t || t >= 48 && t <= 57 || t >= 65 && t <= 90 || t >= 97 && t <= 122 ? n.charAt(a) : "\\" + n.charAt(a)
             }
             return "#" + r
         }, i = function (e, t) {
-            var n;
+            let n;
             return "easeInQuad" === e.easing && (n = t * t), "easeOutQuad" === e.easing && (n = t * (2 - t)), "easeInOutQuad" === e.easing && (n = t < .5 ? 2 * t * t : (4 - 2 * t) * t - 1), "easeInCubic" === e.easing && (n = t * t * t), "easeOutCubic" === e.easing && (n = --t * t * t + 1), "easeInOutCubic" === e.easing && (n = t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1), "easeInQuart" === e.easing && (n = t * t * t * t), "easeOutQuart" === e.easing && (n = 1 - --t * t * t * t), "easeInOutQuart" === e.easing && (n = t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t), "easeInQuint" === e.easing && (n = t * t * t * t * t), "easeOutQuint" === e.easing && (n = 1 + --t * t * t * t * t), "easeInOutQuint" === e.easing && (n = t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t), e.customEasing && (n = e.customEasing(t)), n || t
         }, u = function () {
             return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight)
         }, c = function (e, t, n) {
-            var o = 0;
+            let o = 0;
             if (e.offsetParent) do {
                 o += e.offsetTop, e = e.offsetParent
             } while (e);
@@ -52,18 +52,18 @@
             return !!("matchMedia" in e && e.matchMedia("(prefers-reduced-motion)").matches)
         };
     return function (a, d) {
-        var m, h, g, p, v, b, y, S = {};
+        let m, h, g, p, v, b, y, S = {};
         S.cancelScroll = function () {
             cancelAnimationFrame(y)
         }, S.animateScroll = function (t, a, r) {
-            var f = o(m || n, r || {}), d = "[object Number]" === Object.prototype.toString.call(t),
+            let f = o(m || n, r || {}), d = "[object Number]" === Object.prototype.toString.call(t),
                 h = d || !t.tagName ? null : t;
             if (d || h) {
-                var g = e.pageYOffset;
+                let g = e.pageYOffset;
                 f.header && !p && (p = document.querySelector(f.header)), v || (v = s(p));
-                var b, y, E, I = d ? t : c(h, v, parseInt("function" == typeof f.offset ? f.offset() : f.offset, 10)),
+                let b, y, E, I = d ? t : c(h, v, parseInt("function" == typeof f.offset ? f.offset() : f.offset, 10)),
                     O = I - g, A = u(), C = 0, w = function (n, o) {
-                        var r = e.pageYOffset;
+                        let r = e.pageYOffset;
                         if (n == o || r == o || (g < o && e.innerHeight + r) >= A) return S.cancelScroll(), l(t, o, d), f.after(t, a), b = null, !0
                     }, Q = function (t) {
                         b || (b = t), C += t - b, y = C / parseInt(f.speed, 10), y = y > 1 ? 1 : y, E = g + O * i(f, y), e.scrollTo(0, Math.floor(E)), w(E, I) || (e.requestAnimationFrame(Q), b = t)
@@ -71,11 +71,11 @@
                 0 === e.pageYOffset && e.scrollTo(0, 0), f.before(t, a), S.cancelScroll(), e.requestAnimationFrame(Q)
             }
         };
-        var E = function (e) {
+        let E = function (e) {
             h && (h.id = h.getAttribute("data-scroll-id"), S.animateScroll(h, g), h = null, g = null)
         }, I = function (t) {
             if (!f() && 0 === t.button && !t.metaKey && !t.ctrlKey && (g = t.target.closest(a)) && "a" === g.tagName.toLowerCase() && !t.target.closest(m.ignore) && g.hostname === e.location.hostname && g.pathname === e.location.pathname && /#/.test(g.href)) {
-                var n;
+                let n;
                 try {
                     n = r(decodeURIComponent(g.hash))
                 } catch (e) {
@@ -83,7 +83,7 @@
                 }
                 if ("#" === n) {
                     t.preventDefault(), h = document.body;
-                    var o = h.id ? h.id : "smooth-scroll-top";
+                    let o = h.id ? h.id : "smooth-scroll-top";
                     return h.setAttribute("data-scroll-id", o), h.id = "", void(e.location.hash.substring(1) === o ? E() : e.location.hash = o)
                 }
                 h = document.querySelector(n), h && (h.setAttribute("data-scroll-id", h.id), h.id = "", g.hash === e.location.hash && (t.preventDefault(), E()))
@@ -115,32 +115,59 @@ $(document).ready(function () {
     $('select').material_select();
     $('.carousel').carousel({fullWidth: true, noWrap: false});
     $(window).on('hashchange',function(){
-        var animationName = 'animated fadeInLeft';
-        var animationEnd = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd webkitAnimationEnd';
+        let animationName = 'animated fadeInLeft';
+        let animationEnd = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd webkitAnimationEnd';
         $('.contentBox').addClass(animationName).one(animationEnd, function(){
             $('.contentBox').removeClass(animationName);
         });
 
     });
-    var scroll = new SmoothScroll('a[href*="#"]');
+    let scroll = new SmoothScroll('a[href*="#"]');
 });
 
 function next() {
+    console.log();
     $('.carousel').carousel('next', 1);
 }
+function callAPI(data){
+    return new Promise ((res,rej)=>{
+        $.ajax({
+            url:'https://hackher.herokuapp.com/register',
+            type:'POST',
+            data:data,
+            success:function (data) {
+                res(data);
+            },
+            error:function () {
+                rej(data);
+            }
+        })
+    });
+}
 function register() {
-    var fname = $('#fname').val();
-    var lname = $('#lname').val();
-    var email = $('#email').val();
-    var phone = $('#phone').val();
-    var reg = $('#reg').val();
-    var gender = $('#dropdown').val();
-    if (!fname || !lname || !email || !phone || !reg || !gender) {
-        alert('Make sure all the fields are entered correctly');
-    }
-    else {
-        $('.carousel').carousel('next', 1);
-        alert('Form has been successfully submitted.')
-    }
-
+    let fname = $('#fname').val();
+    let lname = $('#lname').val();
+    let email = $('#email').val();
+    let phone = $('#phone').val();
+    let regno = $('#reg').val();
+    let gender = $('#dropdown').val();
+    const $loading =$('#loading');
+    $loading.addClass('la-animate');
+    callAPI({fname,lname,email,phone,regno,gender}).then((data)=>{
+        $loading.removeClass('la-animate');
+        if(data.flag){
+            let $regForm=$('#regForm');
+            $regForm.before('<h2>Registration successful</h2>');
+            $regForm.remove();
+        }
+        else {
+            data.errors.split('+').map((err)=>{
+                Materialize.toast(err,3000);
+            });
+        }
+        console.log(data);
+    }).catch(function () {
+        $loading.removeClass('la-animate');
+        Materialize.toast('Network connectivity error !',3000);
+    })
 }
